@@ -9,9 +9,8 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-
 body{
-  font-family:'Roboto', sans-serif;
+  font-family:'Roboto';
   background:radial-gradient(circle at top,#0f0 0%,#000 40%);
   color:#fff;
 }
@@ -20,13 +19,12 @@ body{
 header{
   display:flex;
   justify-content:space-between;
-  padding:20px;
+  padding:20px 50px;
+  position:sticky;
+  top:0;
 }
 
-.logo{
-  font-family:'Orbitron';
-  color:#0f0;
-}
+.logo{font-family:'Orbitron';color:#0f0;}
 
 /* HERO */
 .hero{
@@ -36,12 +34,11 @@ header{
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:20px;
 }
 
 .hero h1{
   font-family:'Orbitron';
-  font-size:2.5rem;
+  font-size:3.5rem;
   background:linear-gradient(90deg,#0f0,#00fff7);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -49,7 +46,7 @@ header{
 
 .hero-button{
   margin-top:20px;
-  padding:15px 30px;
+  padding:15px 35px;
   border:none;
   border-radius:30px;
   background:linear-gradient(90deg,#0f0,#00fff7);
@@ -57,15 +54,15 @@ header{
   cursor:pointer;
 }
 
-/* SERVICES */
+/* SERVICE BUTTONS */
 .services{
   text-align:center;
-  padding:40px 20px;
+  padding:50px;
 }
 
 .service-btn{
   margin:10px;
-  padding:15px 25px;
+  padding:15px 30px;
   border-radius:30px;
   border:none;
   background:#111;
@@ -79,7 +76,7 @@ header{
   color:#000;
 }
 
-/* POPUP (FIXED) */
+/* POPUP */
 .popup{
   display:none;
   position:fixed;
@@ -87,45 +84,40 @@ header{
   left:0;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.9);
+  background:rgba(0,0,0,0.8);
   justify-content:center;
   align-items:center;
   flex-direction:column;
-  z-index:9999; /* 🔥 MOST IMPORTANT FIX */
+  z-index:9999;
 }
 
-/* POPUP BOX */
+.popup.show{
+  display:flex;
+}
+
 .popup-content{
   background:#111;
-  padding:25px;
-  border-radius:15px;
+  padding:30px;
+  border-radius:20px;
   border:1px solid #0f0;
+  max-width:600px;
   width:90%;
-  max-width:500px;
-  text-align:center;
 }
 
-/* TABLE */
 table{
   width:100%;
   margin-top:20px;
   border-collapse:collapse;
 }
-
 th,td{
   border:1px solid #0f0;
   padding:10px;
 }
+th{background:#0f0;color:#000;}
 
-th{
-  background:#0f0;
-  color:#000;
-}
-
-/* CLOSE BUTTON */
 .close-btn{
   margin-top:20px;
-  padding:10px 20px;
+  padding:10px;
   background:red;
   border:none;
   color:#fff;
@@ -146,6 +138,7 @@ th{
   <a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank" class="hero-button">Get Started</a>
 </section>
 
+<!-- SERVICE BUTTONS -->
 <section class="services">
   <h2 style="color:#0f0;">Choose Service</h2>
 
@@ -155,46 +148,87 @@ th{
   <button class="service-btn" onclick="comingSoon()">App</button>
 </section>
 
-<!-- WEBSITE POPUP -->
+<!-- WEBSITE OPTIONS -->
 <div id="websitePopup" class="popup">
   <div class="popup-content">
     <h2>Select Method</h2>
 
-    <button onclick="githubPlans()" class="service-btn">GitHub</button>
-    <button onclick="googlePlans()" class="service-btn">Google Services</button>
+    <button onclick="githubPlans()" class="service-btn">Publish through GitHub</button>
+    <button onclick="googlePlans()" class="service-btn">Publish through Google Services</button>
 
     <br><br>
     <button onclick="closeAll()" class="close-btn">Close</button>
   </div>
 </div>
 
-<!-- GITHUB POPUP -->
+<!-- GITHUB PLANS -->
 <div id="githubPopup" class="popup">
   <div class="popup-content">
-    <h2>GitHub Plans</h2>
+    <h2>Website Plans</h2>
 
-    <p><b>BASIC ₹500</b> – 1–3 pages, SEO, 1 revision</p>
-    <p><b>PREMIUM ₹1000</b> – 4–7 pages, custom design, 10 revisions</p>
-    <p><b>ULTIMATE ₹2000</b> – Unlimited pages, animations, e-commerce</p>
+    <p><b>BASIC (₹2000)</b><br>
+    Ideal for small personal or simple business websites.<br>
+    Features:<br>
+    1–3 web pages (Home, About, Contact)<br>
+    Mobile responsive design<br>
+    Basic template/theme<br>
+    Simple contact form<br>
+    Social media links integration<br>
+    Basic SEO setup<br>
+    1 revision</p>
+
+    <p><b>PREMIUM (₹3000–₹5000)</b><br>
+    Features:<br>
+    4–7 web pages<br>
+    Custom design<br>
+    Google forms<br>
+    Social media integration<br>
+    1 free Poster Design<br>
+    Image & video inclusion<br>
+    10 revisions<br>
+    Theme selection</p>
+
+    <p><b>ULTIMATE (₹5000–₹8000+)</b><br>
+    Features:<br>
+    Unlimited pages<br>
+    Animations<br>
+    E-commerce tools<br>
+    Forms (Google Forms)<br>
+    Social media integration<br>
+    Media & sliders<br>
+    Blog section<br>
+    Unlimited revisions</p>
 
     <button onclick="closeAll()" class="close-btn">Close</button>
   </div>
 </div>
 
-<!-- GOOGLE POPUP -->
+<!-- GOOGLE PLANS -->
 <div id="googlePopup" class="popup">
   <div class="popup-content">
-    <h2>Google Plans</h2>
+    <h2>Website Plans</h2>
 
     <table>
-      <tr><th>Plan</th><th>Price</th></tr>
-      <tr><td>Basic</td><td>₹2000</td></tr>
-      <tr><td>Premium</td><td>₹3000–₹5000</td></tr>
-      <tr><td>Ultimate</td><td>₹5000–₹8000+</td></tr>
+      <tr><th>Plan</th><th>Details</th></tr>
+
+      <tr>
+        <td>BASIC ₹2000</td>
+        <td>1–3 pages, responsive, basic design, SEO, 1 revision</td>
+      </tr>
+
+      <tr>
+        <td>PREMIUM ₹3000–₹5000</td>
+        <td>4–7 pages, custom design, media, forms, 10 revisions</td>
+      </tr>
+
+      <tr>
+        <td>ULTIMATE ₹5000–₹8000+</td>
+        <td>Unlimited pages, animations, e-commerce, blog, unlimited revisions</td>
+      </tr>
     </table>
 
-    <p style="margin-top:10px;color:#00fff7;">
-      Developer Fee ₹50,000 (Optional)
+    <p style="margin-top:15px;color:#00fff7;">
+      Google Developer Fee = ₹50,000 (Optional)
     </p>
 
     <button onclick="closeAll()" class="close-btn">Close</button>
@@ -204,21 +238,21 @@ th{
 <script>
 function openWebsite(){
   closeAll();
-  document.getElementById("websitePopup").style.display = "flex";
+  document.getElementById("websitePopup").classList.add("show");
 }
 
 function githubPlans(){
   closeAll();
-  document.getElementById("githubPopup").style.display = "flex";
+  document.getElementById("githubPopup").classList.add("show");
 }
 
 function googlePlans(){
   closeAll();
-  document.getElementById("googlePopup").style.display = "flex";
+  document.getElementById("googlePopup").classList.add("show");
 }
 
 function closeAll(){
-  document.querySelectorAll(".popup").forEach(p => p.style.display = "none");
+  document.querySelectorAll(".popup").forEach(p => p.classList.remove("show"));
 }
 
 function comingSoon(){
