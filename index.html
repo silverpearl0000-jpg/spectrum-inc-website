@@ -19,7 +19,7 @@ body{
 header{
   display:flex;
   justify-content:space-between;
-  padding:20px 50px;
+  padding:20px;
   position:sticky;
   top:0;
 }
@@ -34,11 +34,12 @@ header{
   justify-content:center;
   align-items:center;
   text-align:center;
+  padding:20px;
 }
 
 .hero h1{
   font-family:'Orbitron';
-  font-size:3.5rem;
+  font-size:2.5rem;
   background:linear-gradient(90deg,#0f0,#00fff7);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -57,12 +58,12 @@ header{
 /* SERVICE BUTTONS */
 .services{
   text-align:center;
-  padding:50px;
+  padding:40px 20px;
 }
 
 .service-btn{
   margin:10px;
-  padding:15px 30px;
+  padding:15px 25px;
   border-radius:30px;
   border:none;
   background:#111;
@@ -82,18 +83,20 @@ header{
   position:fixed;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.8);
+  background:rgba(0,0,0,0.85);
   justify-content:center;
   align-items:center;
+  flex-direction:column; /* FIXED */
+  padding:20px;
 }
 
 .popup-content{
   background:#111;
-  padding:30px;
+  padding:25px;
   border-radius:20px;
   border:1px solid #0f0;
   max-width:600px;
-  width:90%;
+  width:100%;
 }
 
 table{
@@ -113,6 +116,7 @@ th{background:#0f0;color:#000;}
   background:red;
   border:none;
   color:#fff;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -134,9 +138,9 @@ th{background:#0f0;color:#000;}
   <h2 style="color:#0f0;">Choose Service</h2>
 
   <button class="service-btn" onclick="openWebsite()">Website</button>
-  <button class="service-btn">Web App</button>
-  <button class="service-btn">APK</button>
-  <button class="service-btn">App</button>
+  <button class="service-btn" onclick="comingSoon()">Web App</button>
+  <button class="service-btn" onclick="comingSoon()">APK</button>
+  <button class="service-btn" onclick="comingSoon()">App</button>
 </section>
 
 <!-- WEBSITE OPTIONS -->
@@ -185,6 +189,7 @@ th{background:#0f0;color:#000;}
 
 <script>
 function openWebsite(){
+  closeAll();
   document.getElementById("websitePopup").style.display="flex";
 }
 
@@ -200,6 +205,10 @@ function googlePlans(){
 
 function closeAll(){
   document.querySelectorAll('.popup').forEach(p=>p.style.display="none");
+}
+
+function comingSoon(){
+  alert("This feature is coming soon 🚀");
 }
 </script>
 
