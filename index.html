@@ -97,17 +97,28 @@ header{
 
 .popup-content{
   background:#111;
-  padding:30px;
+  padding:25px;
   border-radius:20px;
   border:1px solid #0f0;
   max-width:600px;
   width:90%;
+  max-height:80vh;      /* 🔥 FIX */
+  overflow-y:auto;      /* 🔥 FIX */
 }
 
+/* TEXT IMPROVEMENT */
+.popup-content p{
+  margin-bottom:15px;
+  line-height:1.6;
+  font-size:14px;
+}
+
+/* TABLE */
 table{
   width:100%;
   margin-top:20px;
   border-collapse:collapse;
+  font-size:14px;
 }
 th,td{
   border:1px solid #0f0;
@@ -138,7 +149,6 @@ th{background:#0f0;color:#000;}
   <a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank" class="hero-button">Get Started</a>
 </section>
 
-<!-- SERVICE BUTTONS -->
 <section class="services">
   <h2 style="color:#0f0;">Choose Service</h2>
 
@@ -166,38 +176,37 @@ th{background:#0f0;color:#000;}
   <div class="popup-content">
     <h2>Website Plans</h2>
 
-    <p><b>BASIC (₹2000)</b><br>
-    Ideal for small personal or simple business websites.<br>
-    Features:<br>
-    1–3 web pages (Home, About, Contact)<br>
-    Mobile responsive design<br>
-    Basic template/theme<br>
-    Simple contact form<br>
-    Social media links integration<br>
-    Basic SEO setup<br>
-    1 revision</p>
+    <p><b>BASIC (₹2000)</b></p>
+    <p>
+    • 1–3 pages (Home, About, Contact)<br>
+    • Mobile responsive<br>
+    • Basic design<br>
+    • Contact form<br>
+    • Social media integration<br>
+    • Basic SEO<br>
+    • 1 revision
+    </p>
 
-    <p><b>PREMIUM (₹3000–₹5000)</b><br>
-    Features:<br>
-    4–7 web pages<br>
-    Custom design<br>
-    Google forms<br>
-    Social media integration<br>
-    1 free Poster Design<br>
-    Image & video inclusion<br>
-    10 revisions<br>
-    Theme selection</p>
+    <p><b>PREMIUM (₹3000–₹5000)</b></p>
+    <p>
+    • 4–7 pages<br>
+    • Custom design<br>
+    • Google forms<br>
+    • Social media<br>
+    • Poster design<br>
+    • Images & videos<br>
+    • 10 revisions
+    </p>
 
-    <p><b>ULTIMATE (₹5000–₹8000+)</b><br>
-    Features:<br>
-    Unlimited pages<br>
-    Animations<br>
-    E-commerce tools<br>
-    Forms (Google Forms)<br>
-    Social media integration<br>
-    Media & sliders<br>
-    Blog section<br>
-    Unlimited revisions</p>
+    <p><b>ULTIMATE (₹5000–₹8000+)</b></p>
+    <p>
+    • Unlimited pages<br>
+    • Animations<br>
+    • E-commerce<br>
+    • Forms<br>
+    • Blog section<br>
+    • Unlimited revisions
+    </p>
 
     <button onclick="closeAll()" class="close-btn">Close</button>
   </div>
@@ -213,7 +222,7 @@ th{background:#0f0;color:#000;}
 
       <tr>
         <td>BASIC ₹2000</td>
-        <td>1–3 pages, responsive, basic design, SEO, 1 revision</td>
+        <td>1–3 pages, responsive, SEO, 1 revision</td>
       </tr>
 
       <tr>
@@ -223,7 +232,7 @@ th{background:#0f0;color:#000;}
 
       <tr>
         <td>ULTIMATE ₹5000–₹8000+</td>
-        <td>Unlimited pages, animations, e-commerce, blog, unlimited revisions</td>
+        <td>Unlimited pages, animations, e-commerce, blog</td>
       </tr>
     </table>
 
