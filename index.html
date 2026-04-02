@@ -9,8 +9,9 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
+
 body{
-  font-family:'Roboto';
+  font-family:'Roboto', sans-serif;
   background:radial-gradient(circle at top,#0f0 0%,#000 40%);
   color:#fff;
 }
@@ -20,11 +21,12 @@ header{
   display:flex;
   justify-content:space-between;
   padding:20px;
-  position:sticky;
-  top:0;
 }
 
-.logo{font-family:'Orbitron';color:#0f0;}
+.logo{
+  font-family:'Orbitron';
+  color:#0f0;
+}
 
 /* HERO */
 .hero{
@@ -47,7 +49,7 @@ header{
 
 .hero-button{
   margin-top:20px;
-  padding:15px 35px;
+  padding:15px 30px;
   border:none;
   border-radius:30px;
   background:linear-gradient(90deg,#0f0,#00fff7);
@@ -55,7 +57,7 @@ header{
   cursor:pointer;
 }
 
-/* SERVICE BUTTONS */
+/* SERVICES */
 .services{
   text-align:center;
   padding:40px 20px;
@@ -77,42 +79,53 @@ header{
   color:#000;
 }
 
-/* POPUP */
+/* POPUP (FIXED) */
 .popup{
   display:none;
   position:fixed;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.85);
+  background:rgba(0,0,0,0.9);
   justify-content:center;
   align-items:center;
-  flex-direction:column; /* FIXED */
-  padding:20px;
+  flex-direction:column;
+  z-index:9999; /* 🔥 MOST IMPORTANT FIX */
 }
 
+/* POPUP BOX */
 .popup-content{
   background:#111;
   padding:25px;
-  border-radius:20px;
+  border-radius:15px;
   border:1px solid #0f0;
-  max-width:600px;
-  width:100%;
+  width:90%;
+  max-width:500px;
+  text-align:center;
 }
 
+/* TABLE */
 table{
   width:100%;
   margin-top:20px;
   border-collapse:collapse;
 }
+
 th,td{
   border:1px solid #0f0;
   padding:10px;
 }
-th{background:#0f0;color:#000;}
 
+th{
+  background:#0f0;
+  color:#000;
+}
+
+/* CLOSE BUTTON */
 .close-btn{
   margin-top:20px;
-  padding:10px;
+  padding:10px 20px;
   background:red;
   border:none;
   color:#fff;
@@ -133,7 +146,6 @@ th{background:#0f0;color:#000;}
   <a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank" class="hero-button">Get Started</a>
 </section>
 
-<!-- SERVICE BUTTONS -->
 <section class="services">
   <h2 style="color:#0f0;">Choose Service</h2>
 
@@ -143,18 +155,20 @@ th{background:#0f0;color:#000;}
   <button class="service-btn" onclick="comingSoon()">App</button>
 </section>
 
-<!-- WEBSITE OPTIONS -->
+<!-- WEBSITE POPUP -->
 <div id="websitePopup" class="popup">
   <div class="popup-content">
     <h2>Select Method</h2>
+
     <button onclick="githubPlans()" class="service-btn">GitHub</button>
     <button onclick="googlePlans()" class="service-btn">Google Services</button>
+
     <br><br>
     <button onclick="closeAll()" class="close-btn">Close</button>
   </div>
 </div>
 
-<!-- GITHUB PLANS -->
+<!-- GITHUB POPUP -->
 <div id="githubPopup" class="popup">
   <div class="popup-content">
     <h2>GitHub Plans</h2>
@@ -167,7 +181,7 @@ th{background:#0f0;color:#000;}
   </div>
 </div>
 
-<!-- GOOGLE PLANS -->
+<!-- GOOGLE POPUP -->
 <div id="googlePopup" class="popup">
   <div class="popup-content">
     <h2>Google Plans</h2>
@@ -179,7 +193,7 @@ th{background:#0f0;color:#000;}
       <tr><td>Ultimate</td><td>₹5000–₹8000+</td></tr>
     </table>
 
-    <p style="margin-top:15px;color:#00fff7;">
+    <p style="margin-top:10px;color:#00fff7;">
       Developer Fee ₹50,000 (Optional)
     </p>
 
@@ -190,25 +204,25 @@ th{background:#0f0;color:#000;}
 <script>
 function openWebsite(){
   closeAll();
-  document.getElementById("websitePopup").style.display="flex";
+  document.getElementById("websitePopup").style.display = "flex";
 }
 
 function githubPlans(){
   closeAll();
-  document.getElementById("githubPopup").style.display="flex";
+  document.getElementById("githubPopup").style.display = "flex";
 }
 
 function googlePlans(){
   closeAll();
-  document.getElementById("googlePopup").style.display="flex";
+  document.getElementById("googlePopup").style.display = "flex";
 }
 
 function closeAll(){
-  document.querySelectorAll('.popup').forEach(p=>p.style.display="none");
+  document.querySelectorAll(".popup").forEach(p => p.style.display = "none");
 }
 
 function comingSoon(){
-  alert("This feature is coming soon 🚀");
+  alert("Coming Soon 🚀");
 }
 </script>
 
