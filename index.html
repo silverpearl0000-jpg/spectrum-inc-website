@@ -5,42 +5,137 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Spectrum Inc.</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-body{font-family:Arial;background:#050505;color:#fff;text-align:center;}
-.btn{padding:12px 25px;margin:10px;border:none;border-radius:20px;background:#0f0;cursor:pointer;}
-.popup{display:none;position:fixed;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;}
-.popup-content{background:#111;padding:25px;border-radius:15px;width:90%;max-width:600px;overflow:auto;max-height:90%;}
-table{width:100%;border-collapse:collapse;margin-top:10px;}
-td,th{border:1px solid #0f0;padding:8px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Roboto',sans-serif;
+  background:#050505;
+  color:#fff;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 50px;
+  position:fixed;
+  width:100%;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(12px);
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.hero h1{
+  font-family:'Orbitron';
+  font-size:3.5rem;
+}
+
+/* BUTTON */
+.btn{
+  padding:12px 25px;
+  margin:10px;
+  border:none;
+  border-radius:25px;
+  background:linear-gradient(90deg,#0f0,#00fff7);
+  cursor:pointer;
+}
+
+/* GLASS CARD */
+.popup{
+  display:none;
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+.popup-content{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  padding:30px;
+  border-radius:20px;
+  width:90%;
+  max-width:800px;
+  max-height:85vh;
+  overflow-y:auto;
+  text-align:left;
+}
+
+/* TEXT FIX */
+.popup-content h3{
+  margin-top:20px;
+  color:#0f0;
+}
+.popup-content p{
+  line-height:1.6;
+}
+.popup-content ul{
+  padding-left:20px;
+}
+.popup-content li{
+  margin-bottom:6px;
+}
+
+/* TABLE */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+td,th{
+  border:1px solid #0f0;
+  padding:10px;
+}
+
 </style>
 </head>
 
 <body>
 
-<h1>Spectrum Inc.</h1>
+<header>
+<h2 style="color:#0f0;">SPECTRUM INC.</h2>
+</header>
 
-<!-- 4 BUTTONS -->
+<!-- HERO -->
+<section class="hero">
+<h1>Imagine. Order. We Create.</h1>
+
 <button class="btn" onclick="openPublish()">Website</button>
 <button class="btn">Web App</button>
 <button class="btn">APK</button>
 <button class="btn" onclick="showApp()">App</button>
+</section>
 
-<!-- SELECT PUBLISH -->
+<!-- SELECT -->
 <div id="publishPopup" class="popup">
 <div class="popup-content">
-<h2>Select Publishing Method</h2>
-<button class="btn" onclick="showGithub()">Publish through GitHub</button>
-<button class="btn" onclick="showGoogle()">Publish through Google Services</button>
+<h2>Select Publishing</h2>
+<button class="btn" onclick="showGithub()">GitHub</button>
+<button class="btn" onclick="showGoogle()">Google Services</button>
 <br><br>
 <button class="btn" onclick="closePublish()">Close</button>
 </div>
 </div>
 
-<!-- GITHUB FULL PLAN -->
+<!-- GITHUB -->
 <div id="githubPopup" class="popup">
 <div class="popup-content">
 
-<h2>GitHub Website Plans</h2>
+<h2>GitHub Plans</h2>
 
 <h3>BASIC (₹2000)</h3>
 <p>Ideal for small personal or simple business websites.</p>
@@ -53,38 +148,29 @@ td,th{border:1px solid #0f0;padding:8px;}
 <li>Basic SEO setup (meta tags, titles)</li>
 <li>1 revision</li>
 </ul>
-<p><b>Good for:</b> Personal blogs, small portfolios, or small business landing pages.</p>
 
 <h3>PREMIUM (₹3000–₹5000)</h3>
-<p>Better for growing businesses needing more features and customization.</p>
+<p>Better for growing businesses needing more features.</p>
 <ul>
 <li>4–7 web pages</li>
-<li>Mobile responsive design</li>
 <li>Custom design</li>
 <li>Google forms</li>
 <li>Social media integration</li>
-<li>1 free Poster Design</li>
-<li>Image & video Inclusion</li>
+<li>Poster Design</li>
+<li>Image & video inclusion</li>
 <li>10 revisions</li>
-<li>Theme Selections</li>
 </ul>
-<p><b>Good for:</b> Small businesses, startups, bloggers.</p>
 
 <h3>ULTIMATE (₹5000–₹8000+)</h3>
-<p>For businesses that need a full-featured, professional website.</p>
 <ul>
 <li>Unlimited pages</li>
-<li>Fully custom design + animations</li>
-<li>E-commerce tools (If required)</li>
-<li>Contact, enquiry, booking forms (Google Forms)</li>
-<li>Social media integration</li>
-<li>Image/video, sliders</li>
-<li>Blog or news section</li>
+<li>Animations</li>
+<li>E-commerce tools</li>
+<li>Blog section</li>
 <li>Unlimited revisions</li>
 </ul>
-<p><b>Good for:</b> Medium businesses & professional portfolios.</p>
 
-<p style="color:#0f0;"><b>Google Developer Fee (Optional): ₹50,000</b></p>
+<p style="color:#0f0;">Google Developer Fee (Optional): ₹50,000</p>
 
 <a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank">
 <button class="btn">Order Now</button>
@@ -96,7 +182,7 @@ td,th{border:1px solid #0f0;padding:8px;}
 </div>
 </div>
 
-<!-- GOOGLE FULL + TABLE -->
+<!-- GOOGLE -->
 <div id="googlePopup" class="popup">
 <div class="popup-content">
 
@@ -109,18 +195,16 @@ td,th{border:1px solid #0f0;padding:8px;}
 <tr><td>ULTIMATE</td><td>₹5000–₹8000+</td></tr>
 </table>
 
-<br>
-
 <h3>BASIC</h3>
-<p>1–3 pages, responsive design, SEO, contact form, 1 revision</p>
+<p>1–3 pages, responsive, SEO, contact form</p>
 
 <h3>PREMIUM</h3>
-<p>4–7 pages, custom design, media, Google forms, 10 revisions</p>
+<p>Custom design, media, Google forms, 10 revisions</p>
 
 <h3>ULTIMATE</h3>
-<p>Unlimited pages, animations, e-commerce, blog, unlimited revisions</p>
+<p>Unlimited pages, animations, e-commerce, blog</p>
 
-<p style="color:#0f0;"><b>Google Developer Fee (Optional): ₹50,000</b></p>
+<p style="color:#0f0;">Google Developer Fee (Optional): ₹50,000</p>
 
 <a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank">
 <button class="btn">Order Now</button>
@@ -136,22 +220,18 @@ td,th{border:1px solid #0f0;padding:8px;}
 <div id="appPopup" class="popup">
 <div class="popup-content">
 <h2>Coming Soon</h2>
-<p>This feature will be available later.</p>
+<p>This sector will be added later.</p>
 <button class="btn" onclick="closeApp()">Close</button>
 </div>
 </div>
 
 <script>
-
-// OPEN / CLOSE
 function openPublish(){
 document.getElementById("publishPopup").style.display="flex";
 }
 function closePublish(){
 document.getElementById("publishPopup").style.display="none";
 }
-
-// GITHUB
 function showGithub(){
 closePublish();
 document.getElementById("githubPopup").style.display="flex";
@@ -159,8 +239,6 @@ document.getElementById("githubPopup").style.display="flex";
 function closeGithub(){
 document.getElementById("githubPopup").style.display="none";
 }
-
-// GOOGLE
 function showGoogle(){
 closePublish();
 document.getElementById("googlePopup").style.display="flex";
@@ -168,15 +246,12 @@ document.getElementById("googlePopup").style.display="flex";
 function closeGoogle(){
 document.getElementById("googlePopup").style.display="none";
 }
-
-// APP
 function showApp(){
 document.getElementById("appPopup").style.display="flex";
 }
 function closeApp(){
 document.getElementById("appPopup").style.display="none";
 }
-
 </script>
 
 </body>
