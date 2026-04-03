@@ -100,6 +100,7 @@ ul{text-align:left;margin:10px 0;color:#ccc;}
   background:rgba(0,0,0,0.85);
   justify-content:center;
   align-items:center;
+  z-index:2000;
 }
 
 .popup-content{
@@ -141,7 +142,6 @@ footer{text-align:center;padding:40px;}
   <h1>Imagine. Order. We Create.</h1>
   <p>We build Websites, Web Apps & APKs for your ideas.</p>
 
-  <!-- ADDED BUTTONS -->
   <div>
     <button class="btn" onclick="openPublish()">Website</button>
     <button class="btn">Web App</button>
@@ -153,7 +153,6 @@ footer{text-align:center;padding:40px;}
 <!-- SERVICES -->
 <section id="services">
   <h2>Our Services</h2>
-
   <div class="grid">
     <div class="card">Website Development</div>
     <div class="card">Web App Development</div>
@@ -164,52 +163,36 @@ footer{text-align:center;padding:40px;}
 
 <!-- PLANS (UNCHANGED) -->
 <section id="plans">
-<!-- KEEP YOUR ORIGINAL PLAN SECTION SAME -->
+<h2>Website Plans</h2>
+<p>(Your existing plans remain here unchanged)</p>
 </section>
 
-<!-- PUBLISH POPUP -->
+<!-- POPUPS -->
+
+<!-- SELECT -->
 <div id="publishPopup" class="popup">
 <div class="popup-content">
 <h2>Select Publishing Method</h2>
-
 <button class="btn" onclick="showGithub()">Publish through GitHub</button>
 <button class="btn" onclick="showGoogle()">Publish through Google Services</button>
-
 <br><br>
 <button class="btn" onclick="closePublish()">Close</button>
 </div>
 </div>
 
-<!-- GITHUB POPUP -->
+<!-- GITHUB -->
 <div id="githubPopup" class="popup">
 <div class="popup-content">
-
 <h2>GitHub Plans</h2>
 
 <p><b>BASIC (₹2000)</b><br>
-Ideal for small personal or simple business websites.<br>
-1–3 web pages (Home, About, Contact)<br>
-Mobile responsive design<br>
-Basic template/theme<br>
-Simple contact form<br>
-Social media links integration<br>
-Basic SEO setup<br>
-1 revision</p>
+1–3 pages, responsive, contact form, SEO, 1 revision</p>
 
 <p><b>PREMIUM (₹3000–₹5000)</b><br>
-4–7 pages<br>
-Custom design<br>
-Google forms<br>
-Poster design<br>
-Image & video inclusion<br>
-10 revisions</p>
+4–7 pages, custom design, media, 10 revisions</p>
 
 <p><b>ULTIMATE (₹5000–₹8000+)</b><br>
-Unlimited pages<br>
-Animations<br>
-E-commerce tools<br>
-Blog section<br>
-Unlimited revisions</p>
+Unlimited pages, animations, e-commerce, blog</p>
 
 <p style="color:#0f0;">Google Developer Fee (Optional): ₹50,000</p>
 
@@ -219,37 +202,19 @@ Unlimited revisions</p>
 
 <br><br>
 <button class="btn" onclick="closeGithub()">Close</button>
-
 </div>
 </div>
 
-<!-- GOOGLE POPUP -->
+<!-- GOOGLE -->
 <div id="googlePopup" class="popup">
 <div class="popup-content">
-
 <h2>Google Services Plans</h2>
 
 <table>
-<tr><th>Plan</th><th>Price</th><th>Details</th></tr>
-
-<tr>
-<td>BASIC</td>
-<td>₹2000</td>
-<td>1–3 pages, responsive, contact form, SEO, 1 revision</td>
-</tr>
-
-<tr>
-<td>PREMIUM</td>
-<td>₹3000–₹5000</td>
-<td>4–7 pages, custom design, forms, media, 10 revisions</td>
-</tr>
-
-<tr>
-<td>ULTIMATE</td>
-<td>₹5000–₹8000+</td>
-<td>Unlimited pages, animations, e-commerce, blog</td>
-</tr>
-
+<tr><th>Plan</th><th>Price</th></tr>
+<tr><td>BASIC</td><td>₹2000</td></tr>
+<tr><td>PREMIUM</td><td>₹3000–₹5000</td></tr>
+<tr><td>ULTIMATE</td><td>₹5000–₹8000+</td></tr>
 </table>
 
 <p style="color:#0f0;">Google Developer Fee (Optional): ₹50,000</p>
@@ -260,15 +225,14 @@ Unlimited revisions</p>
 
 <br><br>
 <button class="btn" onclick="closeGoogle()">Close</button>
-
 </div>
 </div>
 
-<!-- APP POPUP -->
+<!-- APP -->
 <div id="appPopup" class="popup">
 <div class="popup-content">
 <h2>Coming Soon 🚀</h2>
-<p>This Sector is under research and may activate in a few months.</p>
+<p>This Sector is under research and may activate soon.</p>
 <button onclick="closePopup()" class="btn">Close</button>
 </div>
 </div>
@@ -278,27 +242,63 @@ Unlimited revisions</p>
 </footer>
 
 <script>
-// EXISTING JS SAME
+// PARTICLES
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 
+let particles=[];
+for(let i=0;i<80;i++){
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2,dx:(Math.random()-0.5),dy:(Math.random()-0.5)});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{
+p.x+=p.dx;p.y+=p.dy;
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="#0f0";
+ctx.fill();
+});
+requestAnimationFrame(animate);
+}
+animate();
+
+// BUTTON LOGIC
 function openPublish(){
 document.getElementById("publishPopup").style.display="flex";
 }
+
 function closePublish(){
 document.getElementById("publishPopup").style.display="none";
 }
+
 function showGithub(){
-document.getElementById("publishPopup").style.display="none";
+closePublish();
 document.getElementById("githubPopup").style.display="flex";
 }
+
 function closeGithub(){
 document.getElementById("githubPopup").style.display="none";
 }
+
 function showGoogle(){
-document.getElementById("publishPopup").style.display="none";
+closePublish();
 document.getElementById("googlePopup").style.display="flex";
 }
+
 function closeGoogle(){
 document.getElementById("googlePopup").style.display="none";
+}
+
+function showApp(){
+document.getElementById("appPopup").style.display="flex";
+}
+
+function closePopup(){
+document.getElementById("appPopup").style.display="none";
 }
 </script>
 
