@@ -17,7 +17,6 @@ body{
   overflow-x:hidden;
 }
 
-/* PARTICLES */
 #particles{
   position:fixed;
   width:100%;
@@ -25,7 +24,6 @@ body{
   z-index:-1;
 }
 
-/* HEADER */
 header{
   display:flex;
   justify-content:space-between;
@@ -43,7 +41,6 @@ nav a{
   text-decoration:none;
 }
 
-/* HERO */
 .hero{
   height:100vh;
   display:flex;
@@ -62,20 +59,16 @@ nav a{
 }
 
 .btn{
-  padding:12px 25px;
+  padding:12px 30px;
   border:none;
   border-radius:25px;
   background:linear-gradient(90deg,#0f0,#00fff7);
   cursor:pointer;
-  margin:10px;
-  color:#000;
-  font-weight:bold;
+  margin-top:15px;
 }
 
-/* SECTION */
 section{padding:100px 50px;text-align:center;}
 
-/* GRID */
 .grid{
   display:flex;
   gap:30px;
@@ -83,24 +76,22 @@ section{padding:100px 50px;text-align:center;}
   justify-content:center;
 }
 
-/* CARDS */
 .card{
-  width:300px;
+  width:280px;
   padding:25px;
   background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(15px);
+  backdrop-filter:blur(10px);
   border-radius:20px;
   transition:0.3s;
 }
 
 .card:hover{
   transform:translateY(-10px);
-  box-shadow:0 0 25px #0f0;
+  box-shadow:0 0 20px #0f0;
 }
 
 ul{text-align:left;margin:10px 0;color:#ccc;}
 
-/* POPUP */
 .popup{
   display:none;
   position:fixed;
@@ -115,20 +106,9 @@ ul{text-align:left;margin:10px 0;color:#ccc;}
   background:#111;
   padding:30px;
   border-radius:20px;
-  max-width:500px;
+  max-width:400px;
 }
 
-/* TABLE */
-table{
-  width:100%;
-  border-collapse:collapse;
-}
-td,th{
-  border:1px solid #0f0;
-  padding:10px;
-}
-
-/* FOOTER */
 footer{text-align:center;padding:40px;}
 </style>
 </head>
@@ -147,132 +127,138 @@ footer{text-align:center;padding:40px;}
   </nav>
 </header>
 
-<!-- HERO -->
 <section id="home" class="hero">
   <h1>Imagine. Order. We Create.</h1>
-  <p>Web apps, APKs, and websites — your ideas, our execution.</p>
+  <p>We build Websites, Web Apps & APKs for your ideas.</p>
+  <button class="btn">Get Started</button>
+</section>
 
-  <!-- MAIN BUTTONS -->
-  <div>
-    <button class="btn" onclick="openPublish()">Website</button>
-    <button class="btn">Web App</button>
-    <button class="btn">APK</button>
-    <button class="btn" onclick="showApp()">App</button>
+<section id="services">
+  <h2>Our Services</h2>
+
+  <div class="grid">
+    <div class="card">Website Development</div>
+    <div class="card">Web App Development</div>
+    <div class="card">APK Development</div>
+    <div class="card" onclick="showApp()">App Development</div>
   </div>
 </section>
 
-<!-- POPUP SELECT -->
-<div id="publishPopup" class="popup">
-<div class="popup-content">
-<h2>Select Publishing Method</h2>
-
-<button class="btn" onclick="showGithub()">Publish via GitHub</button>
-<button class="btn" onclick="showGoogle()">Publish via Google Services</button>
-
-<br><br>
-<button class="btn" onclick="closePublish()">Close</button>
-</div>
-</div>
-
-<!-- GOOGLE TABLE POPUP -->
-<div id="googlePopup" class="popup">
-<div class="popup-content">
-
-<h2>Google Services Plans</h2>
-
-<table>
-<tr><th>Plan</th><th>Price</th><th>Details</th></tr>
-
-<tr>
-<td>BASIC</td>
-<td>₹2000</td>
-<td>1–3 pages, responsive, basic design, contact form, SEO, 1 revision</td>
-</tr>
-
-<tr>
-<td>PREMIUM</td>
-<td>₹3000-₹5000</td>
-<td>4–7 pages, custom design, Google Forms, poster design, media, 10 revisions</td>
-</tr>
-
-<tr>
-<td>ULTIMATE</td>
-<td>₹5000-₹8000+</td>
-<td>Unlimited pages, animations, e-commerce, blog, unlimited revisions</td>
-</tr>
-
-</table>
-
-<p style="margin-top:15px;color:#0f0;">
-Google Developer Fee (Optional): ₹50,000
-</p>
-
-<button class="btn" onclick="closeGoogle()">Close</button>
-
-</div>
-</div>
-
-<!-- WEBSITE PLANS -->
 <section id="plans">
 
 <h2>Website Plans</h2>
+<div class="grid">
 
+<div class="card">
+<h3>BASIC ₹500</h3>
+<ul>
+<li>✔ 1–3 Pages Website</li>
+<li>✔ Mobile Responsive</li>
+<li>✔ Basic UI Design</li>
+<li>✔ Simple Animations</li>
+<li>✔ Delivery: 2–3 Days</li>
+</ul>
+<p><b>Best For:</b> Beginners, school projects</p>
+<a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank">
+<button class="btn">Order</button>
+</a>
+</div>
+
+<div class="card">
+<h3>PREMIUM ₹1000</h3>
+<ul>
+<li>✔ 4–6 Pages Website</li>
+<li>✔ Advanced UI Design</li>
+<li>✔ Smooth Animations</li>
+<li>✔ Contact Form</li>
+<li>✔ Faster Delivery</li>
+</ul>
+<p><b>Best For:</b> Startups & portfolios</p>
+<a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank">
+<button class="btn">Order</button>
+</a>
+</div>
+
+<div class="card">
+<h3>ULTIMATE ₹2000+</h3>
+<ul>
+<li>✔ 6–10+ Pages</li>
+<li>✔ Premium UI + Effects</li>
+<li>✔ Custom Features</li>
+<li>✔ Dashboard / Login</li>
+<li>✔ Priority Support</li>
+</ul>
+<p><b>Best For:</b> Businesses</p>
+<a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank">
+<button class="btn">Order</button>
+</a>
+</div>
+
+</div>
+
+<h2 style="margin-top:60px;">Web App Plans</h2>
+<div class="grid">
+
+<div class="card">
+<h3>BASIC ₹1500</h3>
+<ul>
+<li>✔ Simple Web App</li>
+<li>✔ Basic UI</li>
+<li>✔ Core Function</li>
+</ul>
+<a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank">
+<button class="btn">Order</button>
+</a>
+</div>
+
+<div class="card">
+<h3>PREMIUM ₹3000</h3>
+<ul>
+<li>✔ Advanced UI</li>
+<li>✔ Multiple Features</li>
+<li>✔ Database Integration</li>
+</ul>
+<a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank">
+<button class="btn">Order</button>
+</a>
+</div>
+
+</div>
+
+<h2 style="margin-top:60px;">APK Plans</h2>
 <div class="grid">
 
 <div class="card">
 <h3>BASIC ₹2000</h3>
-<p>Ideal for small personal or simple business websites.</p>
 <ul>
-<li>1–3 web pages</li>
-<li>Mobile responsive</li>
-<li>Basic template</li>
-<li>Contact form</li>
-<li>SEO setup</li>
-<li>1 revision</li>
+<li>✔ Simple Android App</li>
+<li>✔ Basic UI</li>
 </ul>
 <a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank">
-<button class="btn">Order Basic</button>
+<button class="btn">Order</button>
 </a>
 </div>
 
 <div class="card">
-<h3>PREMIUM ₹3000-₹5000</h3>
-<p>Better for growing businesses.</p>
+<h3>PREMIUM ₹5000+</h3>
 <ul>
-<li>4–7 pages</li>
-<li>Custom design</li>
-<li>Google forms</li>
-<li>Poster design</li>
-<li>10 revisions</li>
+<li>✔ Advanced App</li>
+<li>✔ API + Database</li>
+<li>✔ Play Store Ready</li>
 </ul>
 <a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank">
-<button class="btn">Order Premium</button>
-</a>
-</div>
-
-<div class="card">
-<h3>ULTIMATE ₹5000+</h3>
-<p>Full-featured professional website.</p>
-<ul>
-<li>Unlimited pages</li>
-<li>Animations</li>
-<li>E-commerce</li>
-<li>Blog system</li>
-<li>Unlimited revisions</li>
-</ul>
-<a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank">
-<button class="btn">Order Ultimate</button>
+<button class="btn">Order</button>
 </a>
 </div>
 
 </div>
+
 </section>
 
-<!-- APP POPUP -->
 <div id="appPopup" class="popup">
 <div class="popup-content">
 <h2>Coming Soon 🚀</h2>
-<p>This sector will be launched soon.</p>
+<p>This Sector is under research and may activate in a few months.</p>
 <button onclick="closePopup()" class="btn">Close</button>
 </div>
 </div>
@@ -282,8 +268,6 @@ Google Developer Fee (Optional): ₹50,000
 </footer>
 
 <script>
-
-// PARTICLES
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
@@ -307,32 +291,13 @@ requestAnimationFrame(animate);
 }
 animate();
 
-// POPUPS
-function openPublish(){
-document.getElementById("publishPopup").style.display="flex";
-}
-function closePublish(){
-document.getElementById("publishPopup").style.display="none";
-}
-function showGithub(){
-alert("GitHub plans are shown below in Website Plans section");
-closePublish();
-document.getElementById("plans").scrollIntoView();
-}
-function showGoogle(){
-document.getElementById("googlePopup").style.display="flex";
-}
-function closeGoogle(){
-document.getElementById("googlePopup").style.display="none";
-}
-
 function showApp(){
 document.getElementById("appPopup").style.display="flex";
 }
+
 function closePopup(){
 document.getElementById("appPopup").style.display="none";
 }
-
 </script>
 
 </body>
