@@ -15,6 +15,12 @@ body{
   background:#050505;
   color:#fff;
   overflow-x:hidden;
+  transition:background 0.3s,color 0.3s;
+}
+
+body.light-mode{
+  background:#f5f5f5;
+  color:#333;
 }
 
 #particles{
@@ -27,6 +33,7 @@ body{
 header{
   display:flex;
   justify-content:space-between;
+  align-items:center;
   padding:20px 50px;
   position:fixed;
   width:100%;
@@ -35,11 +42,43 @@ header{
   z-index:1000;
 }
 
+header.light-mode{
+  background:rgba(255,255,255,0.9);
+}
+
 nav a{
   color:#0f0;
   margin-left:20px;
   text-decoration:none;
+  transition:0.3s;
 }
+
+nav a:hover{color:#00fff7;}
+
+.whatsapp-btn{
+  background:#25D366;
+  color:white;
+  padding:8px 15px;
+  border-radius:25px;
+  text-decoration:none;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.whatsapp-btn:hover{transform:scale(1.05);box-shadow:0 5px 15px rgba(37,211,102,0.4);}
+
+.mode-toggle{
+  background:none;
+  border:2px solid #0f0;
+  color:#0f0;
+  padding:8px 12px;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.mode-toggle:hover{background:#0f0;color:#000;}
 
 .hero{
   height:100vh;
@@ -48,6 +87,7 @@ nav a{
   justify-content:center;
   align-items:center;
   text-align:center;
+  position:relative;
 }
 
 .hero h1{
@@ -56,6 +96,21 @@ nav a{
   background:linear-gradient(90deg,#0f0,#00fff7);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+  position:relative;
+}
+
+.typing-cursor{
+  display:inline-block;
+  background:linear-gradient(90deg,#0f0,#00fff7);
+  width:3px;
+  height:60px;
+  animation:blink 1s infinite;
+  margin-left:2px;
+}
+
+@keyframes blink{
+  0%,50%{opacity:1;}
+  51%,100%{opacity:0;}
 }
 
 .btn{
@@ -65,6 +120,27 @@ nav a{
   background:linear-gradient(90deg,#0f0,#00fff7);
   cursor:pointer;
   margin-top:15px;
+  position:relative;
+  overflow:hidden;
+  transition:0.3s;
+}
+
+.btn::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent, rgba(255,255,255,0.3), transparent);
+  transition:0.5s;
+}
+
+.btn:hover::before{left:100%;}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(0,255,247,0.5);
 }
 
 section{padding:100px 50px;text-align:center;}
@@ -83,7 +159,26 @@ section{padding:100px 50px;text-align:center;}
   backdrop-filter:blur(10px);
   border-radius:20px;
   transition:0.3s;
+  position:relative;
 }
+
+.light-mode .card{background:rgba(0,0,0,0.1);}
+
+.card::before{
+  content:'';
+  position:absolute;
+  top:-2px;
+  left:-2px;
+  right:-2px;
+  bottom:-2px;
+  background:linear-gradient(45deg,#0f0,#00fff7,#0f0);
+  border-radius:22px;
+  z-index:-1;
+  opacity:0;
+  transition:0.3s;
+}
+
+.card:hover::before{opacity:1;}
 
 .card:hover{
   transform:translateY(-10px);
@@ -91,6 +186,8 @@ section{padding:100px 50px;text-align:center;}
 }
 
 ul{text-align:left;margin:10px 0;color:#ccc;}
+
+.light-mode ul{color:#666;}
 
 .popup{
   display:none;
@@ -109,16 +206,86 @@ ul{text-align:left;margin:10px 0;color:#ccc;}
   max-width:400px;
 }
 
+.light-mode .popup-content{background:#fff;color:#333;}
+
+#progress-bar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:0%;
+  height:4px;
+  background:linear-gradient(90deg,#0f0,#00fff7);
+  z-index:1001;
+  transition:width 0.1s;
+}
+
+#back-to-top{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  background:linear-gradient(90deg,#0f0,#00fff7);
+  border:none;
+  border-radius:50%;
+  width:50px;
+  height:50px;
+  color:white;
+  font-size:20px;
+  cursor:pointer;
+  display:none;
+  transition:0.3s;
+  z-index:1000;
+}
+
+#back-to-top:hover{transform:scale(1.1);box-shadow:0 5px 20px rgba(0,255,247,0.5);}
+
+#loader{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#050505;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  transition:opacity 0.5s;
+}
+
+.loader-spinner{
+  width:50px;
+  height:50px;
+  border:4px solid rgba(0,255,247,0.3);
+  border-top:4px solid #0f0;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
+
 footer{text-align:center;padding:40px;}
 </style>
 </head>
 
 <body>
 
+<div id="loader">
+  <div class="loader-spinner"></div>
+</div>
+
+<div id="progress-bar"></div>
+
 <canvas id="particles"></canvas>
 
 <header>
   <h2 style="color:#0f0;">SPECTRUM INC.</h2>
+  <div style="display:flex;gap:15px;align-items:center;">
+    <a href="https://wa.me/8763492450?text=Hi%20Spectrum%20Inc!%20I%20want%20to%20order..." class="whatsapp-btn" target="_blank">💬 WhatsApp</a>
+    <button class="mode-toggle" onclick="toggleMode()">🌙</button>
+  </div>
   <nav>
     <a href="#home">Home</a>
     <a href="#services">Services</a>
@@ -127,13 +294,15 @@ footer{text-align:center;padding:40px;}
   </nav>
 </header>
 
-<section id="home" class="hero">
-  <h1>Where Ideas Become Innovation</h1>
+<button id="back-to-top" onclick="scrollToTop()">↑</button>
+
+<section id="home" class="hero" data-speed="0.5">
+  <h1 id="hero-text">Where Ideas Become<span class="typing-cursor"></span></h1>
   <p>We build Websites, Web Apps & APKs for your ideas.</p>
   <a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank"><button class="btn">Get Started</button></a>
 </section>
 
-<section id="services">
+<section id="services" data-speed="0.3">
   <h2>Our Services</h2>
 
   <div class="grid">
@@ -144,7 +313,7 @@ footer{text-align:center;padding:40px;}
   </div>
 </section>
 
-<section id="plans">
+<section id="plans" data-speed="0.2">
 
 <h2>Website Plans</h2>
 <div class="grid">
@@ -182,7 +351,7 @@ footer{text-align:center;padding:40px;}
 </div>
 
 <div class="card">
-<h3>ULTIMATE ₹2000+</h3>
+<h3>ULTIMATE ₹2000+ (Google Sevices)</h3>
 <ul>
 <li>✔ 6–10+ Pages</li>
 <li>✔ Premium UI + Effects</li>
@@ -278,23 +447,102 @@ canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 
 let particles=[];
-for(let i=0;i<80;i++){
-particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2,dx:(Math.random()-0.5),dy:(Math.random()-0.5)});
+let mouse={x:0,y:0};
+
+for(let i=0;i<100;i++){
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2,dx:(Math.random()-0.5)*2,dy:(Math.random()-0.5)*2});
 }
 
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
 particles.forEach(p=>{
-p.x+=p.dx;p.y+=p.dy;
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fillStyle="#0f0";
-ctx.fill();
+  // Mouse attraction
+  const dx=mouse.x-p.x;
+  const dy=mouse.y-p.y;
+  const dist=Math.sqrt(dx*dx+dy*dy);
+  if(dist<100){
+    p.dx+=(dx/dist)*0.1;
+    p.dy+=(dy/dist)*0.1;
+  }
+  
+  p.x+=p.dx;p.y+=p.dy;
+  if(p.x<0||p.x>canvas.width)p.dx*=-1;
+  if(p.y<0||p.y>canvas.height)p.dy*=-1;
+  
+  ctx.beginPath();
+  ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+  ctx.fillStyle="#0f0";
+  ctx.fill();
 });
 requestAnimationFrame(animate);
 }
 animate();
 
+document.addEventListener('mousemove',(e)=>{
+  mouse.x=e.clientX;
+  mouse.y=e.clientY;
+});
+
+// Loader
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.getElementById('loader').style.opacity='0';
+    setTimeout(()=>document.getElementById('loader').style.display='none',500);
+  },1000);
+});
+
+// Progress bar
+window.addEventListener('scroll',()=>{
+  const scrolled=window.pageYOffset;
+  const maxScroll=document.documentElement.scrollHeight-window.innerHeight;
+  const scrollPercent=(scrolled/maxScroll)*100;
+  document.getElementById('progress-bar').style.width=scrollPercent+'%';
+  
+  // Back to top
+  if(scrolled>300){
+    document.getElementById('back-to-top').style.display='block';
+  }else{
+    document.getElementById('back-to-top').style.display='none';
+  }
+});
+
+// Typing animation
+const text="Where Ideas Become Innovation";
+const heroText=document.getElementById('hero-text');
+let i=0;
+function typeWriter(){
+  if(i<text.length){
+    heroText.innerHTML=text.slice(0,i)+'<span class="typing-cursor"></span>';
+    i++;
+    setTimeout(typeWriter,100);
+  }else{
+    heroText.innerHTML=text;
+  }
+}
+setTimeout(typeWriter,1000);
+
+// Parallax
+window.addEventListener('scroll',()=>{
+  const scrolled=window.pageYOffset;
+  document.querySelectorAll('[data-speed]').forEach(el=>{
+    const speed=el.getAttribute('data-speed');
+    el.style.transform=`translateY(${scrolled*speed}px)`;
+  });
+});
+
+// Mode toggle
+function toggleMode(){
+  document.body.classList.toggle('light-mode');
+  const btn=document.querySelector('.mode-toggle');
+  btn.textContent=document.body.classList.contains('light-mode')?'☀️':'🌙';
+}
+
+// Back to top
+function scrollToTop(){
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// Existing functions
 function showApp(){
 document.getElementById("appPopup").style.display="flex";
 }
@@ -302,6 +550,12 @@ document.getElementById("appPopup").style.display="flex";
 function closePopup(){
 document.getElementById("appPopup").style.display="none";
 }
+
+// Resize canvas
+window.addEventListener('resize',()=>{
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+});
 </script>
 
 </body>
