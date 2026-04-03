@@ -20,11 +20,11 @@ body{
 header{
   display:flex;
   justify-content:space-between;
-  padding:20px 50px;
+  padding:20px 40px;
   position:fixed;
   width:100%;
   background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(10px);
 }
 
 /* HERO */
@@ -34,11 +34,13 @@ header{
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  text-align:center;
 }
 
 .hero h1{
   font-family:'Orbitron';
   font-size:3.5rem;
+  margin-bottom:20px;
 }
 
 /* BUTTON */
@@ -49,15 +51,16 @@ header{
   border-radius:25px;
   background:linear-gradient(90deg,#0f0,#00fff7);
   cursor:pointer;
+  font-weight:bold;
 }
 
-/* GLASS CARD */
+/* POPUP */
 .popup{
   display:none;
   position:fixed;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.8);
+  background:rgba(0,0,0,0.85);
   justify-content:center;
   align-items:center;
   z-index:1000;
@@ -69,18 +72,21 @@ header{
   padding:30px;
   border-radius:20px;
   width:90%;
-  max-width:800px;
+  max-width:850px;
   max-height:85vh;
   overflow-y:auto;
-  text-align:left;
 }
 
 /* TEXT FIX */
+.popup-content h2{
+  margin-bottom:10px;
+}
 .popup-content h3{
   margin-top:20px;
   color:#0f0;
 }
 .popup-content p{
+  margin:8px 0;
   line-height:1.6;
 }
 .popup-content ul{
@@ -94,13 +100,13 @@ header{
 table{
   width:100%;
   border-collapse:collapse;
-  margin-top:15px;
+  margin:15px 0;
 }
 td,th{
   border:1px solid #0f0;
   padding:10px;
+  text-align:left;
 }
-
 </style>
 </head>
 
@@ -120,22 +126,24 @@ td,th{
 <button class="btn" onclick="showApp()">App</button>
 </section>
 
-<!-- SELECT -->
+<!-- SELECT POPUP -->
 <div id="publishPopup" class="popup">
 <div class="popup-content">
-<h2>Select Publishing</h2>
-<button class="btn" onclick="showGithub()">GitHub</button>
-<button class="btn" onclick="showGoogle()">Google Services</button>
+<h2>Select Publishing Method</h2>
+
+<button class="btn" onclick="showGithub()">Publish via GitHub</button>
+<button class="btn" onclick="showGoogle()">Publish via Google Services</button>
+
 <br><br>
 <button class="btn" onclick="closePublish()">Close</button>
 </div>
 </div>
 
-<!-- GITHUB -->
+<!-- GITHUB POPUP -->
 <div id="githubPopup" class="popup">
 <div class="popup-content">
 
-<h2>GitHub Plans</h2>
+<h2>GitHub Website Plans</h2>
 
 <h3>BASIC (₹2000)</h3>
 <p>Ideal for small personal or simple business websites.</p>
@@ -148,29 +156,37 @@ td,th{
 <li>Basic SEO setup (meta tags, titles)</li>
 <li>1 revision</li>
 </ul>
+<p><b>Good for:</b> Personal blogs, portfolios, small business landing pages.</p>
 
 <h3>PREMIUM (₹3000–₹5000)</h3>
 <p>Better for growing businesses needing more features.</p>
 <ul>
 <li>4–7 web pages</li>
+<li>Mobile responsive design</li>
 <li>Custom design</li>
 <li>Google forms</li>
 <li>Social media integration</li>
-<li>Poster Design</li>
+<li>1 free Poster Design</li>
 <li>Image & video inclusion</li>
 <li>10 revisions</li>
+<li>Theme selections</li>
 </ul>
+<p><b>Good for:</b> Startups & small businesses.</p>
 
 <h3>ULTIMATE (₹5000–₹8000+)</h3>
+<p>For full-featured professional websites.</p>
 <ul>
 <li>Unlimited pages</li>
-<li>Animations</li>
-<li>E-commerce tools</li>
-<li>Blog section</li>
+<li>Fully custom design + animations</li>
+<li>E-commerce tools (if required)</li>
+<li>Booking/contact forms</li>
+<li>Social media integration</li>
+<li>Blog/news section</li>
 <li>Unlimited revisions</li>
 </ul>
+<p><b>Good for:</b> Medium businesses & professionals.</p>
 
-<p style="color:#0f0;">Google Developer Fee (Optional): ₹50,000</p>
+<p style="color:#0f0;"><b>Google Developer Fee (Optional): ₹50,000</b></p>
 
 <a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank">
 <button class="btn">Order Now</button>
@@ -182,7 +198,7 @@ td,th{
 </div>
 </div>
 
-<!-- GOOGLE -->
+<!-- GOOGLE POPUP -->
 <div id="googlePopup" class="popup">
 <div class="popup-content">
 
@@ -196,15 +212,15 @@ td,th{
 </table>
 
 <h3>BASIC</h3>
-<p>1–3 pages, responsive, SEO, contact form</p>
+<p>1–3 pages, responsive design, SEO, contact form, 1 revision.</p>
 
 <h3>PREMIUM</h3>
-<p>Custom design, media, Google forms, 10 revisions</p>
+<p>Custom design, media, Google forms, social integration, 10 revisions.</p>
 
 <h3>ULTIMATE</h3>
-<p>Unlimited pages, animations, e-commerce, blog</p>
+<p>Unlimited pages, animations, e-commerce, blog, unlimited revisions.</p>
 
-<p style="color:#0f0;">Google Developer Fee (Optional): ₹50,000</p>
+<p style="color:#0f0;"><b>Google Developer Fee (Optional): ₹50,000</b></p>
 
 <a href="https://forms.gle/5wUYjx3cyLYCNr4b7" target="_blank">
 <button class="btn">Order Now</button>
@@ -216,22 +232,25 @@ td,th{
 </div>
 </div>
 
-<!-- APP -->
+<!-- APP POPUP -->
 <div id="appPopup" class="popup">
 <div class="popup-content">
-<h2>Coming Soon</h2>
-<p>This sector will be added later.</p>
+<h2>Coming Soon 🚀</h2>
+<p>This sector will be available later.</p>
 <button class="btn" onclick="closeApp()">Close</button>
 </div>
 </div>
 
 <script>
+// MAIN POPUP
 function openPublish(){
 document.getElementById("publishPopup").style.display="flex";
 }
 function closePublish(){
 document.getElementById("publishPopup").style.display="none";
 }
+
+// GITHUB
 function showGithub(){
 closePublish();
 document.getElementById("githubPopup").style.display="flex";
@@ -239,6 +258,8 @@ document.getElementById("githubPopup").style.display="flex";
 function closeGithub(){
 document.getElementById("githubPopup").style.display="none";
 }
+
+// GOOGLE
 function showGoogle(){
 closePublish();
 document.getElementById("googlePopup").style.display="flex";
@@ -246,6 +267,8 @@ document.getElementById("googlePopup").style.display="flex";
 function closeGoogle(){
 document.getElementById("googlePopup").style.display="none";
 }
+
+// APP
 function showApp(){
 document.getElementById("appPopup").style.display="flex";
 }
